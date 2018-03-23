@@ -1,17 +1,4 @@
 <div class="container wrapper">
-  <!--<div class="row">
-    <div class="col-2 col-sm-1">
-      <i class="github-icon"></i>
-    </div>
-    <div class="col-7 col-sm-8">
-      <h3 style="position: absolute; bottom: 0">Github Emoji List</h3>
-    </div>
-    <div class="col-3 col-sm-3">
-        <a style="position: absolute; bottom: 0" href="https://github.com/Dellos7/dhtml2pdf" target="_blank">
-          See in Github
-      </a>
-      </div>
-  </div>-->
   <section class="row">
       <div class="col-sm-9">
           <h3><i class="github-icon"></i>&nbsp;Github Emoji List</h3>
@@ -36,13 +23,11 @@
   </section>
   <br>
   <div *ngIf="githubEmojiList && githubEmojiList.length > 0">
-    <!--<form name="search-form">-->
-      <div class="form-group col">
-        <input name="search-form-search" class="form-control input" [(ngModel)]="searchText" placeholder="Searchh Github Emojis!">
-      </div>
-    <!--</form>-->
+    <div class="form-group col">
+      <input name="search-form-search" class="form-control input" [(ngModel)]="searchText" placeholder="Searchh Github Emojis!">
+    </div>
     <div class="row">
-      <div class="col-6 col-sm-4 col-md-2 col-lg-1" *ngFor="let githubEmoji of githubEmojiList | filter: searchText">
+      <div class="col-6 col-sm-4 col-md-2" *ngFor="let githubEmoji of githubEmojiList | filter: searchText">
           <div class="thumbnail">
             <img class="center" [src]="githubEmoji.imageUrl" [alt]="githubEmoji.term">
             <div class="caption" class="text-center">
