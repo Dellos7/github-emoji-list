@@ -70,6 +70,11 @@ git commit -m "first commit"
 
 `git push origin master`
 
+## Roadmap
+
+- Add tag support for the emojis in order to improve search.
+- Add ordering support for the emojis.
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
