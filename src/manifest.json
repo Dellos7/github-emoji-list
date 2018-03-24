@@ -1,0 +1,20 @@
+{
+    "short_name": "GithubEmojiList",
+    "name": "Github Emoji",
+    "start_url": "/",
+
+    "theme_color": "#f48c5b",
+    "background_color": "#ffffff",
+
+    "display": "standalone",
+    "orientation": "portrait",
+
+    "icons": [
+        {
+            "src": "/assets/icons/octocat.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+
+}

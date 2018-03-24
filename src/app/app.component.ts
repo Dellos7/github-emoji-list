@@ -38,15 +38,46 @@ export class AppComponent {
 
   copyTermToClipboard( event, githubEmoji: GithubEmoji ) {
     let target = event.currentTarget;
-    //debugger;
-    let textArea = document.createElement("textarea");
-    textArea.value = githubEmoji.term;
-    target.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    let success = document.execCommand('copy');
-    alertify.notify( '<img style="width: 15px; height: 15px" src="' + githubEmoji.imageUrl +'"> Copied to clipboard: <i>' + githubEmoji.term + '</i>', 'custom', 5 );
-    textArea.style.display = 'none';
+    let copied = this.copyTermToClipboardDeviceDependent( target, githubEmoji.term );
+    this.createCustomAlert(!copied, githubEmoji);
+  }
+
+  copyTermToClipboardDeviceDependent( target: HTMLElement, term: string ) {
+    let el = document.createElement("input");
+    el.value = term;
+    target.appendChild(el);
+    
+    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+      let editable = el.contentEditable;
+      let readOnly = el.readOnly;
+      el.readOnly = true;
+      let range = document.createRange();
+      range.selectNodeContents(el);
+      let sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      el.setSelectionRange(0, 999999);
+      el.contentEditable = editable;
+      //el.readOnly = readOnly;
+    } 
+    else {
+      el.select();
+    }
+    let copied = document.execCommand('copy');
+    el.blur();
+    el.style.display = 'none';
+    return copied;
+  }
+
+  createCustomAlert( error: boolean, githubEmoji: GithubEmoji ) {
+    if( !error ) {
+      let htmlAlertText = `<img style="width: 15px; height: 15px" src="${githubEmoji.imageUrl}">
+                          Copied to clipboard: <i>${githubEmoji.term}</i>`;
+      alertify.notify( htmlAlertText , 'custom', 5 );
+    }
+    else {
+      alertify.error( 'Error copying to the clipboard.' );
+    }
   }
 
 }

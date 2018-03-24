@@ -1,11 +1,14 @@
+import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './pipes/filter-pipe';
 import { GithubService } from './services/github-service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    //ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production})
+    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
   ],
   providers: [
     GithubService
