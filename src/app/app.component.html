@@ -30,7 +30,8 @@
       <i class="metal-icon"></i>&nbsp;<i>Click on any icon to copy the label into the clipboard.</i>
     </div>
     <div class="form-group col">
-      <input name="search-form-search" class="form-control input" [(ngModel)]="searchText" placeholder="Search Github Emojis!">
+      <input type="search" name="search-form-search" class="form-control input" [(ngModel)]="searchText" placeholder="Search Github Emojis!">
+      <span class="glyphicon glyphicon-remove-circle"></span>
     </div>
     <div class="row">
       <div class="col-6 col-sm-4 col-md-2" *ngFor="let githubEmoji of githubEmojiList | filter: searchText" (click)="copyTermToClipboard($event, githubEmoji)">

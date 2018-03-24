@@ -5,3 +5,7 @@
     border-color: rgb(21, 126, 251 );
     border: 1px solid;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+}
