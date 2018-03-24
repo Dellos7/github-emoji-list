@@ -13,21 +13,27 @@
       </h5>
       </div>
   </section>
-  <section class="row">
+  <!--<section class="row">
     <div class="col">
       <a href="https://api.github.com/emojis" target="_blank">
         <i class="point-right-icon"></i>
         https://api.github.com/emojis
       </a>
     </div>
-  </section>
+  </section>-->
   <br>
+  <div class="form-group col">
+      <i class="point-right-icon"></i>&nbsp;<a href="https://api.github.com/emojis" target="_blank">https://api.github.com/emojis</a>
+  </div>
   <div *ngIf="githubEmojiList && githubEmojiList.length > 0">
     <div class="form-group col">
-      <input name="search-form-search" class="form-control input" [(ngModel)]="searchText" placeholder="Searchh Github Emojis!">
+      <i class="metal-icon"></i>&nbsp;<i>Click on any icon to copy the label into the clipboard.</i>
+    </div>
+    <div class="form-group col">
+      <input name="search-form-search" class="form-control input" [(ngModel)]="searchText" placeholder="Search Github Emojis!">
     </div>
     <div class="row">
-      <div class="col-6 col-sm-4 col-md-2" *ngFor="let githubEmoji of githubEmojiList | filter: searchText">
+      <div class="col-6 col-sm-4 col-md-2" *ngFor="let githubEmoji of githubEmojiList | filter: searchText" (click)="copyTermToClipboard($event, githubEmoji)">
           <div class="thumbnail">
             <img class="center" [src]="githubEmoji.imageUrl" [alt]="githubEmoji.term">
             <div class="caption" class="text-center">

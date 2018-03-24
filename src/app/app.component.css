@@ -55,3 +55,12 @@
     display: inline-block;
     background-image: url('https://assets-cdn.github.com/images/icons/emoji/unicode/1f449.png');
 }
+
+.metal-icon {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-image: url('https://assets-cdn.github.com/images/icons/emoji/unicode/1f918.png');
+}

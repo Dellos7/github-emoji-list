@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+.ajs-message.ajs-custom { 
+    color: rgb(21, 126, 251	);
+    background-color: #d9edf7;
+    border-color: rgb(21, 126, 251 );
+    border: 1px solid;
+}
